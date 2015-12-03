@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+  <script src="../js/tokenizer.js"></script>
+  <script src="../js/parser.js"></script>
+  <script src="../js/compiler.js"></script>
+  <script src="../js/vm.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+var input = '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.';
+
+var tokenizer = new Tokenizer();
+var parser = new Parser();
+var compiler = new Compiler();
+
+var tokens = tokenizer.tokenize(input);
+var ast = parser.parse(tokens);
+var program = compiler.compile(ast);
+
+var vm = new VM(program);
+vm.run();
+
+alert(vm.output_buffer);
+</script>
+
+This page should say - 'Hello world!'; created by brainf*ck program.
+<hr/>
+See <i>test/vm-test.js</i> for more examples.
+
+</body>
+</html>
